@@ -6,14 +6,17 @@ namespace StringCalculatorKata
     {
         public static int Add(string input)
         {
-            if(string.IsNullOrEmpty(input))
-                return 0;
-            string[] slices = input.Split(',');
-            if (slices.Length > 1)
+            if (string.IsNullOrEmpty(input))
             {
-                return 10;
+                return 0;
             }
-            return int.Parse(slices[0]);
+            string[] slices = input.Split(',');
+            int sum = 0;
+            foreach (string slice in slices)
+            {
+                sum += int.Parse(slice);
+            }
+            return sum;
 
         }
     }

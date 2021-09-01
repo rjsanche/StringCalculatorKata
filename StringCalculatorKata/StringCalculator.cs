@@ -8,9 +8,13 @@ namespace StringCalculatorKata
         {
             if(string.IsNullOrEmpty(input))
                 return 0;
-            if (input == "1,2")
-                return 3;
-            return int.Parse(input);
+            string[] slices = input.Split(',');
+            if (slices.Length > 1)
+            {
+                return int.Parse(slices[0]) + int.Parse(slices[1]);
+            }
+            return int.Parse(slices[0]);
+
         }
     }
 }

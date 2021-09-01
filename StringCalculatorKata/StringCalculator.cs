@@ -2,7 +2,11 @@
 
 namespace StringCalculatorKata
 {
-    public class StringCalculator
+    public static class StringCalculator
     {
+        public static int Add(string imput)
+        {
+            return 0;
+        }
     }
 }

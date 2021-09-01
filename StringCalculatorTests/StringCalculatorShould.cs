@@ -41,5 +41,17 @@ namespace StringCalculatorTests
             //assert
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void ReturnSumWhenUnknownAmountOfNumbers()
+        {
+            //arrange
+            string input = "1,2,3,4";
+            int expected = 10;
+            //act
+            var result = StringCalculator.Add(input);
+            //assert
+            Assert.AreEqual(expected, result);
+        }
     }
 }

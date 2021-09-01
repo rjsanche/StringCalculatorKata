@@ -53,5 +53,18 @@ namespace StringCalculatorTests
             //assert
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void ReturnSumWhenNewLinesBetweenNumbers()
+        {
+            //arrange
+            string input = "1\n2,3";
+            int expected = 6;
+            //act
+            var result = StringCalculator.Add(input);
+            //assert
+            Assert.AreEqual(expected, result);
+        }
+
     }
 }

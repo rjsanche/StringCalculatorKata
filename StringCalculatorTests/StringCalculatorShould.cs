@@ -29,5 +29,17 @@ namespace StringCalculatorTests
             //assert
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void ReturnSumWhenInputIsTwoNumbers()
+        {
+            //arrange
+            string input = "1,2";
+            int expected = 3;
+            //act
+            var result = StringCalculator.Add(input);
+            //assert
+            Assert.AreEqual(expected, result);
+        }
     }
 }

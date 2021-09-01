@@ -17,5 +17,17 @@ namespace StringCalculatorTests
             //assert
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void ReturnNumberWhenInputIsOneNumber()
+        {
+            //arrange
+            string input = "1";
+            int expected = 1;
+            //act
+            var result = StringCalculator.Add(input);
+            //assert
+            Assert.AreEqual(expected, result);
+        }
     }
 }

@@ -66,5 +66,17 @@ namespace StringCalculatorTests
             Assert.AreEqual(expected, result);
         }
 
+        [TestMethod]
+        public void ReturnSumWhenSupportingNewDelimiters()
+        {
+            //arrange
+            string input = "//;\n1;2;3";
+            int expected = 6;
+            //act
+            var result = StringCalculator.Add(input);
+            //assert
+            Assert.AreEqual(expected, result);
+        }
+        ///https://osherove.com/tdd-kata-1/
     }
 }

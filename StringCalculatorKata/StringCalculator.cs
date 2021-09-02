@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace StringCalculatorKata
 {
@@ -25,14 +26,35 @@ namespace StringCalculatorKata
 
         private static char[] GetNewDelimitersCollection(ref string input)
         {
+            char possibleDelimiter = defaultDelimiters[0];
             if (input.StartsWith("//"))
             {
                 string startNewDelimiterToken = "//";
-                char delimiter = input.Substring(input.IndexOf(startNewDelimiterToken) + startNewDelimiterToken.Length, 1)[0];
+                possibleDelimiter = input.Substring(input.IndexOf(startNewDelimiterToken) + startNewDelimiterToken.Length, 1)[0];
                 input = input.Substring(input.IndexOf('\n') + 1);
+            }
+            else
+            {
+                foreach (char c in input)
+                {
+                    if (!Char.IsDigit(c))
+                    {
+                        if (possibleDelimiter == c)
+                        {
+                            break;
+                        }
+                        if (!defaultDelimiters.Any(x => x == c))
+                        {
+                            possibleDelimiter = c;
+                        }
+                    }
+                }
+            }
+            if (possibleDelimiter != defaultDelimiters[0])
+            {
                 char[] newDelimiters = new char[defaultDelimiters.Length + 1];
                 defaultDelimiters.CopyTo(newDelimiters, 0);
-                newDelimiters[newDelimiters.Length - 1] = delimiter;
+                newDelimiters[newDelimiters.Length - 1] = possibleDelimiter;
                 return newDelimiters;
             }
             return null;

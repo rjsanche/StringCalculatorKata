@@ -96,15 +96,14 @@ namespace StringCalculatorTests
         {
             //arrange
             string input = "-1;2;3";
-            var expected = new NegativeInputException("-1");
+            var expected = "negatives not allowed -1";
             //act
-            Action throwingException = () =>
-            {
-                StringCalculator.Add(input);
-            };
+            var actual = Assert.ThrowsException<NegativeInputException>(() => StringCalculator.Add(input));
             //assert
-            Assert.ThrowsException<NegativeInputException>(throwingException);
+            Assert.AreEqual(expected, actual.Message);
         }
+
+
         ///https://osherove.com/tdd-kata-1/
     }
 }

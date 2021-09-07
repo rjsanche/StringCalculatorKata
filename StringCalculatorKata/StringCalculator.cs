@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace StringCalculatorKata
@@ -16,14 +17,19 @@ namespace StringCalculatorKata
             char[] separator = newDelimiters == null ? defaultDelimiters : newDelimiters;
             string[] slices = input.Split(separator);
             int sum = 0;
+            List<string> errors = new List<string>();
             foreach (string slice in slices)
             {
                 int number = int.Parse(slice);
                 if(number < 0)
                 {
-                    throw new NegativeInputException(slice);
+                    errors.Add(slice);
                 }
                 sum += number;
+            }
+            if(errors.Any())
+            {
+                throw new NegativeInputException(String.Join(',', errors));
             }
             return sum;
 

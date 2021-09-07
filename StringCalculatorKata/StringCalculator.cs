@@ -18,7 +18,12 @@ namespace StringCalculatorKata
             int sum = 0;
             foreach (string slice in slices)
             {
-                sum += int.Parse(slice);
+                int number = int.Parse(slice);
+                if(number < 0)
+                {
+                    throw new NegativeInputException(slice);
+                }
+                sum += number;
             }
             return sum;
 

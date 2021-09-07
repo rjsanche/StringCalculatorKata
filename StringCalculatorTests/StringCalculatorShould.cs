@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StringCalculatorKata;
+using System;
 
 namespace StringCalculatorTests
 {
@@ -88,6 +89,21 @@ namespace StringCalculatorTests
             var result = StringCalculator.Add(input);
             //assert
             Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void ThrowExceptionWhenInputIsNegative()
+        {
+            //arrange
+            string input = "-1;2;3";
+            var expected = new NegativeInputException("-1");
+            //act
+            Action throwingException = () =>
+            {
+                StringCalculator.Add(input);
+            };
+            //assert
+            Assert.ThrowsException<NegativeInputException>(throwingException);
         }
         ///https://osherove.com/tdd-kata-1/
     }
